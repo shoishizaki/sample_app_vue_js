@@ -16,6 +16,17 @@
       <br><br>
       <button @click="createPost">Post</button>
       <h2>Micropost Feed</h2>
+      <hr>
+      <div v-for="post in posts" :key="post.name">
+        <div>
+          UserName: {{post.fields.username.stringValue}}
+        </div>
+        <div>
+          post: {{post.fields.post.stringValue}}
+        </div>
+        <br>
+        <hr>
+      </div>
     </template>
   </div>
 </template>
@@ -27,8 +38,15 @@ import axios from "axios";
     data() {
       return{
         username: "",
-        micropost: ""
+        micropost: "",
+        posts: []
       }
+    },
+    created() {
+      axios.get("https://firestore.googleapis.com/v1/projects/vuejs-759de/databases/(default)/documents/posts"
+      ).then(response => {
+        this.posts = response.data.documents;
+      });
     },
     methods: {
       toSignUp() {
@@ -46,12 +64,7 @@ import axios from "axios";
             }
           }
         }
-       ).then(response => {
-         console.log(response);
-       })
-       .catch(error => {
-         console.log(error);
-       })
+       );
       this.username = "";
       this.post = "";
       }
