@@ -42,9 +42,17 @@ import axios from "axios";
         posts: []
       }
     },
+    computed: {
+      idToken() {
+        return this.$store.getters.idToken;
+      }
+    },
     created() {
-      axios.get("/posts"
-      ).then(response => {
+      axios.get("/posts", {
+        headers: {
+          Authorization: `Bearer ${this.idToken}`
+        }
+      }).then(response => {
         this.posts = response.data.documents;
       });
     },
@@ -63,8 +71,13 @@ import axios from "axios";
               stringValue:this.micropost
             }
           }
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${this.idToken}`
+          }
         }
-       );
+      );
       this.username = "";
       this.micropost = "";
       }
