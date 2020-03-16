@@ -1,12 +1,12 @@
 <template>
   <div class="home">
-    <template>
+    <template v-if="!isAuthenticated">
       <h1>Welcome to the sample App</h1>
       <button @click="toSignUp">Sign up now!!</button>
       <h3>This is the home page for the microposts application by <a href="https://jp.vuejs.org/index.html">vue.js</a> </h3>
       <img src="@/assets/logo.png"/>
     </template>
-    <template>
+    <template v-if="isAuthenticated">
       <h3>MicroPost</h3>
       <label for="username"></label>
       <input id="username" type="text" v-model="username"/>
@@ -45,6 +45,9 @@ import axios from "axios";
     computed: {
       idToken() {
         return this.$store.getters.idToken;
+      },
+      isAuthenticated() {
+        return this.$store.getters.idToken !== null;
       }
     },
     created() {
