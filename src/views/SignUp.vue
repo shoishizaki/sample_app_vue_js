@@ -31,6 +31,8 @@ import axios from "../axios-auth";
       .then(response => {
         console.log(response);
       });
+    this.email = "";
+    this.password = "";
     }
     }
   }
