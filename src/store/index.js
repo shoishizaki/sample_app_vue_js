@@ -34,6 +34,10 @@ export default new Vuex.Store({
       router.push('/')
     });
   },
+  logout({ commit }) {
+    commit('updateIdToken', null);
+    router.replace('/login');
+  },
     refreshIdToken({ commit, dispatch }, refreshToken) {
       axiosRefresh.post('/token?key=AIzaSyDgaqLnSfA_9Oa3s4zrXGlQKk2iAm0SPHg'),
         {

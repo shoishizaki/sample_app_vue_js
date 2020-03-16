@@ -9,8 +9,9 @@
       <router-link to="/users" class="link" active-class="link--active" exact>Users</router-link>
     </template>
     <router-link to="/help" class="link" active-class="link--active" exact>Help</router-link>
-    
-    
+    <template v-if="isAuthenticated">
+      <span class="link" active-class="link--active" @click="logout">Logout</span>
+    </template>
   </div>
 </template>
 
@@ -20,16 +21,23 @@
       isAuthenticated() {
         return this.$store.getters.idToken !== null;
       }
+    },
+    methods: {
+      logout() {
+        this.$store.dispatch('logout');
+      }
     }
-  }
+  };
   
 </script>
 
 <style scoped>
   .link {
     margin-right:10px;
+    cursor: pointer;
   }
   .link--active{
     font-size: 20px;
+    cursor: pointer;
   }
 </style>
