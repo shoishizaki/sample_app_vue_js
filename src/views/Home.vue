@@ -43,7 +43,7 @@ import axios from "axios";
       }
     },
     created() {
-      axios.get("https://firestore.googleapis.com/v1/projects/vuejs-759de/databases/(default)/documents/posts"
+      axios.get("/posts"
       ).then(response => {
         this.posts = response.data.documents;
       });
@@ -53,7 +53,7 @@ import axios from "axios";
         this.$router.push("signup");
       },
       createPost(){
-        axios.post("https://firestore.googleapis.com/v1/projects/vuejs-759de/databases/(default)/documents/posts",
+        axios.post("/posts",
         {
           fields:{
             username: {
@@ -66,7 +66,7 @@ import axios from "axios";
         }
        );
       this.username = "";
-      this.post = "";
+      this.micropost = "";
       }
     }
   }
