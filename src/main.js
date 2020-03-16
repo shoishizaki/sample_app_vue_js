@@ -3,6 +3,7 @@ import App from './App.vue'
 import router from "./router";
 import axios from "axios";
 import Header from "./components/global/Header.vue"
+import store from "./store"
 
 Vue.config.productionTip = false;
 Vue.component("Header", Header);
@@ -10,6 +11,7 @@ Vue.component("Header", Header);
 axios.defaults.baseURL = "https://firestore.googleapis.com/v1/projects/vuejs-759de/databases/(default)/documents"
 
 new Vue({
-  router: router,
+  router,
+  store,
   render: h => h(App),
 }).$mount('#app')
