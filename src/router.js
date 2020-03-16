@@ -4,6 +4,7 @@ import Home from "./views/Home.vue";
 import Help from "./views/Help.vue";
 import Users from "./views/Users.vue"; 
 import SignUp from "./views/SignUp.vue";
+import Login from "./views/Login.vue";
 import UsersPosts from "./views/UsersPosts.vue";
 import UsersProfile from "./views/UsersProfile.vue";
 
@@ -21,6 +22,7 @@ export default new Router({
     {path: 'posts', component: UsersPosts},
     {path: 'profile', component: UsersProfile}
     ]},
-    {path: '/signup', component: SignUp}
+    {path: '/signup', component: SignUp},
+    {path: '/login', component:Login}
   ]
 });
