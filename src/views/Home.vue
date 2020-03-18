@@ -68,10 +68,10 @@ import axios from "axios";
         {
           fields:{
             username: {
-              stringValue:this.username
+              stringValue: this.username
             },
             post: {
-              stringValue:this.micropost
+              stringValue: this.micropost
             }
           }
         },
